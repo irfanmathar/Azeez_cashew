@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/inventory/product/" class="btn btn-primary">add product</a>
+        </div>
+        <div class="col-sm-6">
+            <table class="table-bordered">
+                <tr>
+                    <th>Product_name</th>
+                    <th>Product_variety</th>
+                    <th>gst</th>
+                    <th>amount</th>
+                    <th>picture</th>
+                    <th>update</th>
+                    <th>delete</th>
+                </tr>
+                {% for product in all_product %}
+                <tr>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.product_variety}}</td>
+                    <td>{{product.gst}}</td>
+                    <td>{{product.amount}}</td>
+                    <td>{% if product.picture%}
+                        <img src={{product.picture.url}} width="200px">
+                        {% else %}
+                        <p> no image</p>
+                        {% endif %}
+                    </td>
+                    <td><a href={% url 'product_update' product.id %} class="btn btn-info">Update</a></td>
+                    <td><a href={% url 'product_delete' product.id %} class="btn btn-danger">Delete</a></td>
+                    
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    
+    .container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        
+    }
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+    }
+    h1 {
+        color: #ff7f50;
+    }
+    .info {
+        margin: 20px 0;
+    }
+    .info p {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    .info span {
+        font-weight: bold;
+        color: #333;
+    }
+    .highlight {
+        color: #4caf50;
+    }
+</style>
+<div class="container">
+    
+    <div class="row">
+        
+        <div class="col-sm-6">
+            <form action="" method="POST" id="orderform">
+                {% csrf_token %}
+                {{order_form}}
+                <input type="submit" value="Order Now" class="btn btn-primary" >
+            </form>
+        </div>
+        
+    <div class="col-sm-2">
+            
+        <img src={% static 'assests/images/rsp.jpeg'%} alt="Product Image">
+        <div class="info">
+            <p>Product Type: <span class="highlight">RSP</span></p>
+            <p>Rate: <span class="highlight">Rs.150</span></p>
+            <p>GST:<span class="highlight">10%</span></p>
+            <p>Amount: <span class="highlight">Rs.165 per kg</span></p>
+
+        </div>
+    </div>
+        <div class="col-sm-2">
+            
+            <img src={% static 'assests/images/cashew1.jpeg'%} alt="Product Image">
+            <div class="info">
+                <p>Product Type: <span class="highlight">W320</span></p>
+                <p>Rate: <span class="highlight">Rs.600</span></p>
+                <p>GST:<span class="highlight">10%</span></p>
+                <p>Amount: <span class="highlight">Rs.660 per kg</span></p>
+    
+            </div>
+        </div>
+            <div class="col-sm-2">
+            
+                <img src={% static 'assests/images/ss.jpeg'%} alt="Product Image">
+                <div class="info">
+                    <p>Product Type: <span class="highlight">SS</span></p>
+                    <p>Rate: <span class="highlight">Rs.200</span></p>
+                    <p>GST:<span class="highlight">10%</span></p>
+                    <p>Amount: <span class="highlight">Rs.220 per kg</span></p>
+        
+                </div>
+
+    </div>
+</div>
+<script>
+    document.getElementById('orderForm').onsubmit = function(event) {
+        event.preventDefault();
+        alert('Thanks for ordering! We will contact you soon.');
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+    min-width: 200px;
+}
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.icon {
+    margin-right: 10px;
+}
+</style>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark ">
+    <div class="container-fluid">
+      
+      <h1 class="text-danger">Azeez Cashew</h1>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="d-flex">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link"><i class="bi bi-person-circle"></i>{{username}}</a>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/order/addorder/">Home</a>
+          </li>
+          {% if request.user.role == 1 %}
+          <li class="nav-item">
+            <a class="nav-link" href="/inventory/allproduct/">Add Product</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="/order/allorder/"><i class="bi bi-cart3"></i>Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout/">Logout</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contact Us
+            </a>
+            <div class="dropdown-content">
+              <a href="https://wa.me/6369172440"><i class="fab fa-whatsapp icon"></i>WhatsApp</a>
+              <a href="tel:+916369172440"><i class="fas fa-phone-alt icon"></i>+91 6369172440</a>
+              <a href="matharirfan810@gmail.com"><i class="fas fa-envelope icon"></i>matharirfan810</a>
+            </div>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+    </div>
+  </nav>
