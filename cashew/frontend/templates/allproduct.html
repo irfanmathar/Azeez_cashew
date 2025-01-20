@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #ffecd2, #fcb69f);
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        margin-top: 50px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background-color: #6c5ce7;
+        border-color: #6c5ce7;
+        color: #fff;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    .btn-primary:hover {
+        background-color: #4834d4;
+        border-color: #4834d4;
+    }
+
+    .btn-info {
+        background-color: #74b9ff;
+        border-color: #74b9ff;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .btn-info:hover {
+        background-color: #0984e3;
+        border-color: #0984e3;
+    }
+
+    .btn-danger {
+        background-color: #ff7675;
+        border-color: #ff7675;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .btn-danger:hover {
+        background-color: #d63031;
+        border-color: #d63031;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #ffeaa7;
+        color: #2d3436;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f7f1e3;
+    }
+
+    tr:hover {
+        background-color: #fab1a0;
+        color: #2d3436;
+    }
+
+    img {
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .no-image {
+        font-style: italic;
+        color: #b2bec3;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/inventory/product/" class="btn btn-primary">Add Product</a>
+        </div>
+        <div class="col-sm-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product Variety</th>
+                        <th>GST</th>
+                        <th>Amount</th>
+                        <th>Picture</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in all_product %}
+                    <tr>
+                        <td>{{ product.product_name }}</td>
+                        <td>{{ product.product_variety }}</td>
+                        <td>{{ product.gst }}</td>
+                        <td>{{ product.amount }}</td>
+                        <td>
+                            {% if product.picture %}
+                                <img src="{{ product.picture.url }}" alt="Product Image" width="150px">
+                            {% else %}
+                                <p class="no-image">No image</p>
+                            {% endif %}
+                        </td>
+                        <td><a href="{% url 'product_update' product.id %}" class="btn btn-info">Update</a></td>
+                        <td><a href="{% url 'product_delete' product.id %}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

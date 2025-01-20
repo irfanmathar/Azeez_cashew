@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: 'Arial', sans-serif;
+    }
+
+
+    .container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+
+    h1 {
+        color: #ff7f50;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .col-sm-6 {
+        flex: 1;
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-sm-2 {
+        flex: 1;
+        background-color: #fafafa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .info {
+        margin-top: 15px;
+    }
+
+    .info p {
+        font-size: 16px;
+        margin: 8px 0;
+    }
+
+    .info span {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .highlight {
+        color: #4caf50;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        background-color: #ff7f50;
+        color: #fff;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    .btn:hover {
+        background-color: #ff5722;
+    }
+
+    .col-sm-2:hover {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .col-sm-6 {
+            margin-bottom: 20px;
+        }
+
+        .col-sm-2 {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 50%;
+            margin-top: 20px;
+        }
+    }
+</style>
+
+<div class="container">
+    <h1>Order Your Products</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="" method="POST" id="orderform">
+                {% csrf_token %}
+                {{ order_form }}
+                <input type="submit" value="Order Now" class="btn">
+            </form>
+        </div>
+
+        <div class="col-sm-2">
+            <img src="{% static 'assests/images/rsp.jpeg' %}" alt="RSP Product">
+            <div class="info">
+                <p>Product Type: <span class="highlight">RSP</span></p>
+                <p>Rate: <span class="highlight">Rs.150</span></p>
+                <p>GST: <span class="highlight">10%</span></p>
+                <p>Amount: <span class="highlight">Rs.165 per kg</span></p>
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <img src="{% static 'assests/images/cashew1.jpeg' %}" alt="W320 Product">
+            <div class="info">
+                <p>Product Type: <span class="highlight">W320</span></p>
+                <p>Rate: <span class="highlight">Rs.600</span></p>
+                <p>GST: <span class="highlight">10%</span></p>
+                <p>Amount: <span class="highlight">Rs.660 per kg</span></p>
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <img src="{% static 'assests/images/ss.jpeg' %}" alt="SS Product">
+            <div class="info">
+                <p>Product Type: <span class="highlight">SS</span></p>
+                <p>Rate: <span class="highlight">Rs.200</span></p>
+                <p>GST: <span class="highlight">10%</span></p>
+                <p>Amount: <span class="highlight">Rs.220 per kg</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('orderform').onsubmit = function(event) {
+        event.preventDefault();
+        alert('Thanks for ordering! We will contact you soon.');
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        margin-top: 50px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #6c5ce7;
+        
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: 10px;
+        text-align: center;
+        color: #2d3436;
+        font-size: 13px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f7f1e3;
+    }
+
+    tr:hover {
+        background-color: #ffeaa7;
+        color: #2d3436;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .btn-update {
+        background-color: #74b9ff;
+    }
+
+    .btn-update:hover {
+        background-color: #0984e3;
+    }
+
+    .btn-delete {
+        background-color: #ff7675;
+    }
+
+    .btn-delete:hover {
+        background-color: #d63031;
+    }
+
+    @media (max-width: 768px) {
+        th, td {
+            font-size: 12px;
+            padding: 8px;
+        }
+
+        .container {
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="container">
+    <h2 class="text-center" style="color: #6c5ce7; font-weight: bold;">Order Management</h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Order Date</th>
+                        <th>Product Reference</th>
+                        <th>Phone Number</th>
+                        <th>Shop Name</th>
+                        <th>Address</th>
+                        <th>Landmark</th>
+                        <th>Prefer Date</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                        <th>GST Amount</th>
+                        <th>Bill Amount</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in all_order %}
+                    <tr>
+                        <td>{{ order.date }}</td>
+                        <td>{{ order.product_reference_id }}</td>
+                        <td>{{ order.phone_number }}</td>
+                        <td>{{ order.shop_name }}</td>
+                        <td>{{ order.address }}</td>
+                        <td>{{ order.landmark }}</td>
+                        <td>{{ order.prefer_date }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>{{ order.amount }}</td>
+                        <td>{{ order.gst_amount }}</td>
+                        <td>{{ order.bill_amount }}</td>
+                        <td><button class="btn btn-update">Update</button></td>
+                        <td><button class="btn btn-delete">Delete</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

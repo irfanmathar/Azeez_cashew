@@ -1,0 +1,95 @@
+{% extends 'baselo.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /* Gradient background */
+    body {
+        background: linear-gradient(135deg, #4caf50, #81c784, #c8e6c9);
+        font-family: Arial, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Center container styling */
+    .col-sm-6 {
+        margin-top: 100px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Form input styling */
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    /* Button styling */
+    .btn-primary {
+        background-color: #4caf50;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #388e3c;
+    }
+
+   
+
+    /* Image styling */
+    .img {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+</style>
+    
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <form action=" " method="POST" id="form">
+                <center><img src={% static 'assests/images/cashew.jpeg'%} alt="no image" class='img' width=200px></center>
+                {% csrf_token %}
+                <label>Username</label>
+                <input type='text' name="username" class="form-control" placeholder="Enter a username" required >
+                
+                <br>
+                <label>First Name</label>
+                <input type='text' name="first_name" class="form-control" placeholder="Enter a FirstName" required >
+                <br>
+                
+                <label>Last Name</label>
+                <input type='text' name="last_name" class="form-control" placeholder="Enter a LastName" required >
+                <br>
+                <label>Email</label>
+                <input type='text' name="email" class="form-control" placeholder="Enter a Email" required >
+                <p class="text_danger">{{error}}</p>
+                
+                <br>
+                <label>Password</label>
+                <input type='password' name="password" class="form-control" placeholder="Enter a Password" required >
+                <br>
+                
+                <center><input type='submit' class="btn btn-primary"  ></center>
+            
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

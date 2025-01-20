@@ -1,0 +1,90 @@
+
+{% extends 'baselo.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /* Gradient background */
+    body {
+        background: linear-gradient(135deg, #4caf50, #81c784, #c8e6c9);
+        font-family: Arial, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Center container styling */
+    .col-sm-4 {
+        margin-top: 100px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Form input styling */
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    /* Button styling */
+    .btn-primary {
+        background-color: #4caf50;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #388e3c;
+    }
+
+    /* Signup link styling */
+    .text-success {
+        color: #388e3c;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .text-success:hover {
+        text-decoration: underline;
+    }
+
+    /* Image styling */
+    .img {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-4 text-center">
+            <img src="{% static 'assests/images/cashew.jpeg' %}" alt="no image" class="img" width="200px">
+            <form action="" method="POST" id="form">
+                {% csrf_token %}
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Enter your email" required>
+                <p class="text-danger">{{ error }}</p>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
+
+                <input type="submit" class="btn btn-primary mt-3" value="Log In">
+                <br><br>
+                <a href="/signup/" class="text-success">New user? Please sign up</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
